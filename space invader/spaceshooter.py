@@ -144,18 +144,19 @@ def main():
     run = True
     while run:
         clock.tick(FPS)
+        winner_text = ""
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
-                pygame.quit()
+                
 
-                if event.type == pygame.KEYDOWN:
+            if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_LSHIFT and len(yellow_bullets) < MAX_BULLETS:
                         bullet = pygame.Rect(
                             yellow.x + yellow.width, yellow.y + yellow.height//2 - 2, 10, 5)
                         yellow_bullets.append(bullet)
 
-                if event.type == pygame.KEYDOWN:
+            if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_RSHIFT and len(red_bullets) < MAX_BULLETS:
                         bullet = pygame.Rect(
                             red.x + red.width, red.y + red.height//2 - 2, 10, 5)
@@ -168,7 +169,7 @@ def main():
             if event.type == YELLOW_HIT:
                 yellow_health -= 1
         
-                winner_text = ""
+                
         if red_health <= 0:
             winner_text = "Yellow Wins!"
 
@@ -188,6 +189,7 @@ def main():
         draw_window(red, yellow, red_bullets, yellow_bullets,
                     red_health, yellow_health)
 
+if __name__ =="__main__":
     main()
 
 
